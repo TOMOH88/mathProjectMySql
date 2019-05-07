@@ -23,14 +23,6 @@
 	
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <script type="text/javascript">
-
-window.onload = function(){
-	$(document).bind("contextmenu",function(){   return false;}); //우클릭방지
-	$(document).bind('selectstart',function() {return false;}); //선택방지
-	$(document).bind('dragstart',function(){return false;}); //드래그방지	
-}
-</script>
 </head>
 <body>
 <%@ include file="../common/Adminheader.jsp" %>

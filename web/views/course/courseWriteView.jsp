@@ -53,10 +53,10 @@ $(function(){
     	  var title = $("#title").val();
           var con1 = $("#con1").val();
 
-          if($("#semlist").val() == ""){
+          if($("#sOption").val() == ""){
         	  alert("학기선택해주세요.");
         	  return false;
-          }else if($("#booklist").val() == ""){
+          }else if($("#bOption").val() == ""){
         	  alert("교재선택해주세요.");
         	  return false;
           }else if(title == "" || title == null || title == "&nbsp;" || title == "<p>&nbsp;</p>" || title == "<br>"){
@@ -76,57 +76,7 @@ $(function(){
     			event.preventDefault();
     			}
     		}, true);
-      
-      $.ajax({
-			url : "/math/semlist",
-			type : "post",
-			dataType : "json",
-			success : function(data){
-				var jsonStr = JSON.stringify(data);
-				var json = JSON.parse(jsonStr);
-				
-				var option = "<option value=''>학기선택</option>";
-				for(var s in json.list){
-					option += "<option value='"+decodeURIComponent(json.list[s].semester).replace(/\+/gi, " ") +"'>"+decodeURIComponent(json.list[s].semester).replace(/\+/gi, " ")+"</option>"; 
-				}
-				$("#semlist").html(option);
-			},
-			error: function(jqXHR, textStatus, errorThrown){
-				console.log("error: " + jqXHR + ", " + textStatus + ", " + errorThrown);
-			}
-			
-		})
-		
-      window.onload = function(){
-      	$(document).bind("contextmenu",function(){   return false;}); //우클릭방지
-      	$(document).bind('selectstart',function() {return false;}); //선택방지
-      	$(document).bind('dragstart',function(){return false;}); //드래그방지	
-      }
 });
-
-function  bookListView(){
-	var sem = $("#semlist option:selected").val();
-	$.ajax({
-		url : "/math/booklist",
-		data : { semester : sem },
-		type : "post",
-		dataType : "json",
-		success : function(data){
-			var jsonStr = JSON.stringify(data);
-			var json = JSON.parse(jsonStr);
-			
-			var option = "<option value=''>교재선택</option>";
-			for(var b in json.list){
-				option += "<option value='"+decodeURIComponent(json.list[b].book).replace(/\+/gi, " ") +"'>"+decodeURIComponent(json.list[b].book).replace(/\+/gi, " ")+"</option>"; 
-			}
-			$("#booklist").html(option);
-		},
-		error : function(jqXHR, textStatus, errorThrown){
-			console.log("error: " + jqXHR + ", " + textStatus + ", " + errorThrown);
-		}
-	})
-	
-}
 </script>
 </head>
 <body>
@@ -149,11 +99,17 @@ function  bookListView(){
 	<tr>
 		<th>제목</th>
 		<td>
-			<select id="semlist" name="sOption" class="form-control" onChange="bookListView();">
+			<select id="sOption" name="sOption" class="form-control">
 				<option value="">학기선택</option>
+				<% for(int i = 0; i < semList.size(); i++){ %>
+				<option value="<%=semList.get(i).getSemesterName() %>"><%=semList.get(i).getSemesterName() %></option>
+				<% } %>
 			</select>
-			<select id="booklist" name="bOption" class="form-control">
+			<select id="bOption" name="bOption" class="form-control">
 				<option value="">교재선택</option>
+				<% for(int i = 0; i < bList.size(); i ++){ %>
+				<option value="<%=bList.get(i).getBookName() %>"><%=bList.get(i).getBookName() %></option>
+				<% } %>
 			</select>
 			&nbsp;<input type="text" id="title" name="cTitle" class="form-control">
 		</td>

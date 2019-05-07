@@ -24,13 +24,8 @@
 	<link href="/math/resources/assets/css/reset.css" rel="stylesheet" />
 	<link href="/math/resources/assets/css/notice/noticeListView.css" rel="stylesheet" />
 
+<script type="text/javascript" src="/math/resources/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
-
-window.onload = function(){
-	$(document).bind("contextmenu",function(){   return false;}); //우클릭방지
-	$(document).bind('selectstart',function() {return false;}); //선택방지
-	$(document).bind('dragstart',function(){return false;}); //드래그방지	
-}
 </script>
 </head>
 <body>

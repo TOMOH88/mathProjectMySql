@@ -79,67 +79,11 @@ $(function(){
       			event.preventDefault();
       			}
       		}, true);
-      	
-      	$.ajax({
-			url : "/math/semlist",
-			type : "post",
-			dataType : "json",
-			success : function(data){
-				var jsonStr = JSON.stringify(data);
-				var json = JSON.parse(jsonStr);
-				
-				var option = "<option value=''>학기선택</option>";
-				for(var s in json.list){
-					if(decodeURIComponent(json.list[s].semester).replace(/\+/gi, " ") == "<%=sName%>"){
-						option += "<option value='"+decodeURIComponent(json.list[s].semester).replace(/\+/gi, " ") +"' selected>"+decodeURIComponent(json.list[s].semester).replace(/\+/gi, " ")+"</option>"	
-					}else{
-						option += "<option value='"+decodeURIComponent(json.list[s].semester).replace(/\+/gi, " ") +"'>"+decodeURIComponent(json.list[s].semester).replace(/\+/gi, " ")+"</option>";
-					}
-				}
-				$("#semlist").html(option);
-			},
-			error: function(jqXHR, textStatus, errorThrown){
-				console.log("error: " + jqXHR + ", " + textStatus + ", " + errorThrown);
-			}
-			
-		})
-		
-      		$(document).bind("contextmenu",function(){   return false;}); //우클릭방지
-      		$(document).bind('selectstart',function() {return false;}); //선택방지
-      		$(document).bind('dragstart',function(){return false;}); //드래그방지	
-});
-
-function  bookListView(){
-	var sem = $("#semlist option:selected").val();
-	$.ajax({
-		url : "/math/booklist",
-		data : { semester : sem },
-		type : "post",
-		dataType : "json",
-		success : function(data){
-			var jsonStr = JSON.stringify(data);
-			var json = JSON.parse(jsonStr);
-			
-			var option = "<option value=''>교재선택</option>";
-			for(var b in json.list){
-				if(decodeURIComponent(json.list[b].book).replace(/\+/gi, " ") == "<%=bName%>"){
-					option += "<option value='"+decodeURIComponent(json.list[b].book).replace(/\+/gi, " ") +"' selected>"+decodeURIComponent(json.list[b].book).replace(/\+/gi, " ")+"</option>";	
-				}else{
-					option += "<option value='"+decodeURIComponent(json.list[b].book).replace(/\+/gi, " ") +"'>"+decodeURIComponent(json.list[b].book).replace(/\+/gi, " ")+"</option>";
-				}
-			}
-			$("#booklist").html(option);
-		},
-		error : function(jqXHR, textStatus, errorThrown){
-			console.log("error: " + jqXHR + ", " + textStatus + ", " + errorThrown);
-		}
-	})
-}
+      });  
 </script>
 </head>
 <body>
 <%@ include file="../common/Adminheader.jsp" %>
-<h1><%=sName %></h1>
 <div class="content">
         <div class="container-fluid">
           <div class="row">
@@ -158,9 +102,23 @@ function  bookListView(){
 	<tr>
 		<th>제목</th>
 		<td>
-			<select id="semlist" name="sOption" class="form-control" onchange="bookListView();">
+			<select id="sOption" name="sOption" class="form-control">
+				<option value="">학기선택</option>
+				<% for(int i = 0; i < semList.size(); i++){ %>
+				<%if(semList.get(i).getSemesterName().equals(sName)){ %>
+					<option value="<%=semList.get(i).getSemesterName() %>" selected><%=semList.get(i).getSemesterName() %></option>
+				<%}else{ %>
+					<option value="<%=semList.get(i).getSemesterName() %>" ><%=semList.get(i).getSemesterName() %></option>
+				<% }} %>
 			</select>
-			<select id="booklist" name="bOption" class="form-control"> 
+			<select id="bOption" name="bOption" class="form-control"> 
+				<option value="">교재선택</option>
+				<% for(int i = 0; i < bList.size(); i ++){ %>
+				<%if(bList.get(i).getBookName().equals(bName)){ %>
+					<option value="<%=bList.get(i).getBookName() %>" selected><%=bList.get(i).getBookName() %></option>
+				<%}else{ %>
+					<option value="<%=bList.get(i).getBookName() %>"><%=bList.get(i).getBookName() %></option>
+				<% }} %>
 			</select>
 			&nbsp;<input type="text" id="title" name="cTitle"  value="<%=course.getCourseTitle()%>" class="form-control">
 		</td>

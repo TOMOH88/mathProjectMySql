@@ -29,22 +29,13 @@ $(function(){
       <div class="row">
         <div class="col-md-8 ml-auto mr-auto">
           <div class="brand text-center">
-          <%if(userId != null){ %>
           <h1>FAQ</h1>
             <h3 class="title text-center">목록보기</h3>
-            <%}else{ %>
-            <h1>로그인 해주세요</h1>
-            <%} %>
-            <%if(fList.size() == 0){ %>
-            <h1>글이 없습니다.</h1>
-            <%} %>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <%if(userId != null){ %>
-  <%if(fList.size() > 0){ %>
    <div class="main main-raised">
     <div class="container">
      <p>질문을 클릭하면 답변을 볼 수 있습니다.</p>
@@ -78,10 +69,10 @@ $(function(){
       <div class="card-body" style="float:left;">
         <h5><%=fList.get(i).getAnswerContent() %></h5>
       </div>
-  <%}}} %>
     </div>
   </div>
   <br>
+  <% } %>
 </div>
 </div>
 </div>

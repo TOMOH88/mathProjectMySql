@@ -1,4 +1,4 @@
-﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="popup.model.vo.Popup" %>
 <%
@@ -23,12 +23,6 @@
 <script type="text/javascript">
 function listView(){
 	location.href = '/math/plist?page='+<%=currentPage%>;
-}
-
-window.onload = function(){
-	$(document).bind("contextmenu",function(){   return false;}); //우클릭방지
-	$(document).bind('selectstart',function() {return false;}); //선택방지
-	$(document).bind('dragstart',function(){return false;}); //드래그방지	
 }
 
 </script>
@@ -57,7 +51,8 @@ window.onload = function(){
 			<td><input type="text" name="ptitle" value="<%= popup.getPopupName() %>" class="form-control"></td>
 		</tr>
 		<tr>
-			<input type="hidden" name="plink" value="<%=popup.getPopupLink() %>"  class="form-control" value="popup.jsp">
+			<th>팝업경로</th>
+			<td><input type="text" name="plink" value="<%=popup.getPopupLink() %>"  class="form-control"></td>
 		</tr>
 			<tr>
 			<th>X</th>

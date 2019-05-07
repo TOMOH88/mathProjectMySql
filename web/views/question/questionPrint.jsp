@@ -32,10 +32,6 @@
 				console.log("error: " + jqXHR + ", " + textStatus + ", " + errorThrown);
 			}
 		});
-		
-			$(document).bind("contextmenu",function(){   return false;}); //우클릭방지
-			$(document).bind('selectstart',function() {return false;}); //선택방지
-			$(document).bind('dragstart',function(){return false;}); //드래그방지	
 	});
 	function f1change(){
 		var semester = $("#f1sel option:selected").val();
@@ -101,7 +97,7 @@
 				var print="";
 				for(var i in json.list){
 					var qPath = imgPath + decodeURIComponent(json.list[i].question).replace(/\+/gi, " ");
-					print += "<div class='q'><input type='checkbox' name='img' value='" + qPath + "'>" +
+					print += "<div class='q'><input type='checkbox' style='width: 17px; height: 17px;' name='img' value='" + qPath + "'>" +
 					decodeURIComponent(json.list[i].question).substring(0, decodeURIComponent(json.list[i].question).length-4) + "</div>";
 					
 				}

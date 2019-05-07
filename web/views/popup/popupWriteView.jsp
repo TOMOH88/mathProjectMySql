@@ -1,4 +1,4 @@
-﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="popup.model.vo.Popup" %>
 <!DOCTYPE html>
@@ -14,14 +14,6 @@
 	
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <script type="text/javascript">
-
-window.onload = function(){
-	$(document).bind("contextmenu",function(){   return false;}); //우클릭방지
-	$(document).bind('selectstart',function() {return false;}); //선택방지
-	$(document).bind('dragstart',function(){return false;}); //드래그방지	
-}
-</script>
 <script type="text/javascript" src="/math/resources/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 </script>
@@ -47,7 +39,8 @@ window.onload = function(){
 		<td><input type="text" name="ptitle" id="ptitle" required class="form-control"></td>
 	</tr>
 	<tr>
-		<input type="hidden" name="plink" id="plink" required class="form-control" value="popup.jsp" readonly>
+		<th>링크주소</th>
+		<td><input type="text" name="plink" id="plink" required class="form-control"></td>
 	</tr>
 	<tr>
 		<th>x좌표</th>

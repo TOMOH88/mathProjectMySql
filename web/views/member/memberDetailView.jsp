@@ -31,10 +31,6 @@ $(function() {
 			$("#password").select();
 		}
 	});
-	
-	$(document).bind("contextmenu",function(){   return false;}); //우클릭방지
-	$(document).bind('selectstart',function() {return false;}); //선택방지
-	$(document).bind('dragstart',function(){return false;}); //드래그방지
 });
 function goSubmit() {
 	if(confirm("적용하시겠습니까?")){

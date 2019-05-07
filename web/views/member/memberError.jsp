@@ -10,8 +10,9 @@
 <title>회원관련 에러!</title>
 <script type="text/javascript">
 window.onload = function () {
+	 
 	alert("<%=message %>");
-	location.href="/math/common/login.jsp";
+	location.href="/math/main.jsp";
 	}
 </script>
 </head>

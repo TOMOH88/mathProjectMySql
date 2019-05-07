@@ -24,62 +24,7 @@
 	<link href="/math/resources/assets/css/material-kit.css" rel="stylesheet" />
 	<link href="/math/resources/assets/css/reset.css" rel="stylesheet" />
 	<link href="/math/resources/assets/css/course/courseUserListView.css" rel="stylesheet" />
-	<script type="text/javascript" src="/math/resources/js/jquery-3.3.1.min.js"></script>
-<script type="text/javascript">
-	function courseWrite(){
-		location.href="/math/cwview";
-	}
 	
-	$(function(){
-		$.ajax({
-			url : "/math/semlist",
-			type : "post",
-			dataType : "json",
-			success : function(data){
-				var jsonStr = JSON.stringify(data);
-				var json = JSON.parse(jsonStr);
-				
-				var option = "<option value=''>학기선택</option>";
-				for(var s in json.list){
-					option += "<option value='"+decodeURIComponent(json.list[s].semester).replace(/\+/gi, " ") +"'>"+decodeURIComponent(json.list[s].semester).replace(/\+/gi, " ")+"</option>"; 
-				}
-				$("#semlist").html(option);
-			},
-			error: function(jqXHR, textStatus, errorThrown){
-				console.log("error: " + jqXHR + ", " + textStatus + ", " + errorThrown);
-			}
-			
-		})
-		
-		$(document).bind("contextmenu",function(){   return false;}); //우클릭방지
-   		$(document).bind('selectstart',function() {return false;}); //선택방지
-   		$(document).bind('dragstart',function(){return false;}); //드래그방지
-	});
-	
-	function  bookListView(){
-		var sem = $("#semlist option:selected").val();
-		$.ajax({
-			url : "/math/booklist",
-			data : { semester : sem },
-			type : "post",
-			dataType : "json",
-			success : function(data){
-				var jsonStr = JSON.stringify(data);
-				var json = JSON.parse(jsonStr);
-				
-				var option = "<option value=''>교재선택</option>";
-				for(var b in json.list){
-					option += "<option value='"+decodeURIComponent(json.list[b].book).replace(/\+/gi, " ") +"'>"+decodeURIComponent(json.list[b].book).replace(/\+/gi, " ")+"</option>"; 
-				}
-				$("#booklist").html(option);
-			},
-			error : function(jqXHR, textStatus, errorThrown){
-				console.log("error: " + jqXHR + ", " + textStatus + ", " + errorThrown);
-			}
-		})
-		
-	}
-</script>
 </head>
 <body>
 <%@ include file="../common/header.jsp" %>
@@ -92,7 +37,7 @@
           	<h1>강의</h1>
             <h3 class="title text-center">목록보기</h3>
             <%}else{ %>
-			<h1>로그인 후 이용할 수 있습니다.</h1>	
+			<p class="log-in">로그인 후 이용할 수 있습니다.</p>	
 			<%} %>
           </div>
         </div>
@@ -169,9 +114,17 @@
 <div align="center">
 <form action="/math/culist?userId=<%=userId%>" method="post" class="form-inline ml-auto">
 <div class="container">
-<select name="sOption" class="form-control" id="semlist" onchange="bookListView();">
+<select name="sOption" class="form-control">
+	<option value="">선택하세요</option>
+<% for(int i = 0; i < semList.size(); i++){ %>
+	<option value="<%=semList.get(i).getSemesterName() %>"><%=semList.get(i).getSemesterName() %></option>
+<% } %>
 </select>
-<select name="bOption" class="form-control" id="booklist">
+<select name="bOption" class="form-control">
+	<option value="">선택하세요</option>
+	<% for(int i = 0; i < bList.size(); i ++){ %>
+	<option value="<%=bList.get(i).getBookName() %>"><%=bList.get(i).getBookName() %></option>
+	<% } %>
 </select>
 <button type="submit" class="btn btn-black btn-raised btn-fab btn-round">
                     <i class="material-icons">search</i>

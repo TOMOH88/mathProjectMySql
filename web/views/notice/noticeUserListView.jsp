@@ -21,13 +21,8 @@
 	<link href="/math/resources/assets/css/reset.css" rel="stylesheet" />
 	<link href="/math/resources/assets/css/notice/noticeUserListView.css" rel="stylesheet" />
 
+<script type="text/javascript" src="/math/resources/js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
-
-window.onload = function(){
-	$(document).bind("contextmenu",function(){   return false;}); //우클릭방지
-	$(document).bind('selectstart',function() {return false;}); //선택방지
-	$(document).bind('dragstart',function(){return false;}); //드래그방지	
-}
 </script>
 </head>
 <body>
@@ -37,12 +32,8 @@ window.onload = function(){
       <div class="row">
         <div class="col-md-8 ml-auto mr-auto">
           <div class="brand text-center">
-          <%if(userId != null){ %>
           	<h1>공지사항</h1>
             <h3 class="title text-center">목록보기</h3>
-            <%}else{ %>
-            <h1>로그인 해주세요</h1>
-            <%} %>
           </div>
         </div>
       </div>
@@ -51,7 +42,6 @@ window.onload = function(){
    <div class="main main-raised">
     <div class="container">
       <div class="section text-center">
-<%if(userId != null){ %>      
 <table class="table table-striped table-hover">
 	<tr class="table-success">
 		<th>글번호</th>
@@ -145,7 +135,6 @@ window.onload = function(){
                   </button>
                   </div>
 </form>
-<%} %>
 </div>
 </div>
 </div>

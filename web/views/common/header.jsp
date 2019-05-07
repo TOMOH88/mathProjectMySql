@@ -40,7 +40,7 @@ function logout() {
 <nav class="navbar navbar-color-on-scroll navbar-transparent fixed-top navbar-expand-lg" color-on-scroll="100">
     <div class="container">
       <div class="navbar-translate">
-        	<a class="navbar-brand" href="/math/index.jsp">
+        	<a class="navbar-brand" href="/math/main.jsp">
 <!--         	<i class="material-icons" >account_balance</i> -->
          	감성수학</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">

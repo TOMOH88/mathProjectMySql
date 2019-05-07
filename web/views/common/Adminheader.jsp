@@ -51,7 +51,7 @@ function logout() {
       Tip 2: you can also add an image using data-image tag
   -->
       <div class="logo">
-        <a href="/math/nslist" class="simple-text logo-normal">
+        <a href="#" class="simple-text logo-normal">
           감성수학
         </a>
       </div>

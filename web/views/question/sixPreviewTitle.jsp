@@ -38,11 +38,7 @@
       });
 
    }); --%>
-   window.onload = function(){
-   	$(document).bind("contextmenu",function(){   return false;}); //우클릭방지
-   	$(document).bind('selectstart',function() {return false;}); //선택방지
-   	$(document).bind('dragstart',function(){return false;}); //드래그방지	
-   }
+   
    var initBody;
           function beforePrint()
           {
@@ -107,8 +103,8 @@ for(int i=0; i<6; i++){
     }
 }
 %>
-		<span id="absolutecenter" class="waterMark"><%= waterMark %></span>
    </div>
+   <span class="waterMark"><%= waterMark %></span>
 </div>
 <%
 if(strArr.length > 6){
@@ -145,7 +141,7 @@ if(strArr.length > 6){
          }
       }
    img = img + 6;
-   out.println("<span id='absolutecenter' class='waterMark'>" + waterMark + "</span>");
+   out.println("<span class='waterMark'>" + waterMark + "</span>");
    out.println("</div>");
    out.println("</div>"); 
    if(img == strArr.length)

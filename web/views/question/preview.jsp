@@ -38,12 +38,7 @@
       });
 
    }); --%>
-
-   window.onload = function(){
-   	$(document).bind("contextmenu",function(){   return false;}); //우클릭방지
-   	$(document).bind('selectstart',function() {return false;}); //선택방지
-   	$(document).bind('dragstart',function(){return false;}); //드래그방지	
-   }
+   
    var initBody;
           function beforePrint()
           {
@@ -90,8 +85,8 @@
          }
       }
    img = img + 4;
-   out.println("<span id='absolutecenter' class='waterMark'>" + waterMark + "</span>");
-   out.println("</div>");
+   out.println("</div>"); 
+   out.println("<span class='waterMark'>" + waterMark + "</span>");
    out.println("</div>"); 
    if(img == strArr.length)
       break;
