@@ -1,0 +1,20 @@
+@charset "utf-8";
+
+.table > tbody > tr > th {
+	text-align: center;
+	width: 10%;
+}
+
+.table > tbody > tr > td {
+	width: 90%;
+}
+
+@media (max-width: 576px) {
+	.table > tbody > tr > th {
+		width: 30%;
+	}
+
+	.table > tbody > tr > td {
+		width: 70%;
+	}
+}
