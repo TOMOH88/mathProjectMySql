@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import admin.model.service.AdminService;
 import admin.model.service.SendMail;
+import member.model.service.SHA256Util;
 
 /**
  * Servlet implementation class SendEmailServlet
@@ -37,8 +38,9 @@ public class SendEmailServlet extends HttpServlet {
 		Random r = new Random();
 		int num = r.nextInt(10000000);
 		String hex = Integer.toHexString(num);
-		System.out.println(userId+"는 10진수"+ num+", 16진수"+hex);
-		int result = new AdminService().resetPassword(userId,hex);
+		String salt = SHA256Util.generateSalt();
+        String newPassword = SHA256Util.getEncrypt(hex, salt);
+		int result = new AdminService().resetPassword(userId,newPassword);
 		response.setContentType("text/html; charset=utf-8");
 		String returnValue=null;
 		if(result== 1) {

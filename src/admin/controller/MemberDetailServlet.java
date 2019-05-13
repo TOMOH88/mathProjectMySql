@@ -37,6 +37,7 @@ public class MemberDetailServlet extends HttpServlet {
 		String userId = request.getParameter("userid");
 		int page = Integer.parseInt(request.getParameter("page"));
 		Member member = new AdminService().selectMember(userId);
+		member.setUserPwd("");
 		ArrayList<Semester> slist = new AdminService().selectPermission();
 		ArrayList<Semester> mylsit = new AdminService().selectMyPermission(userId);
 		response.setContentType("text/html; charset=utf-8");

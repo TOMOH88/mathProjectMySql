@@ -55,7 +55,8 @@ public class AdminDao {
 				Date registDate = rset.getDate(5);
 				Date lastModified = rset.getDate(6);
 				String memberLevel = rset.getString(7);
-				member = new Member(userId, userPwd, userName, phone, registDate, lastModified, memberLevel);
+				String salt = rset.getString(8);
+				member = new Member(userId, userPwd, userName, phone, registDate, lastModified, memberLevel,salt);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -100,7 +101,8 @@ public class AdminDao {
 				Date registDate = rset.getDate(5);
 				Date lastModified = rset.getDate(6);
 				String memberLevel = rset.getString(7);
-				list.add(new Member(userId, userPwd, userName, phone, registDate, lastModified, memberLevel));
+				String salt = rset.getString(8);
+				list.add(new Member(userId, userPwd, userName, phone, registDate, lastModified, memberLevel,salt));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -414,7 +416,8 @@ public class AdminDao {
 				Date registDate = rset.getDate(5);
 				Date lastModified = rset.getDate(6);
 				String memberLevel = rset.getString(7);
-				list.add(new Member(userId, userPwd, userName, phone, registDate, lastModified, memberLevel));
+				String salt = rset.getString(8);
+				list.add(new Member(userId, userPwd, userName, phone, registDate, lastModified, memberLevel,salt));
 				
 			}
 		} catch (Exception e) {

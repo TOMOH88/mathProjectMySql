@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import member.model.vo.Semester;
 import member.model.service.MemberService;
+import member.model.service.SHA256Util;
 import member.model.vo.Member;
 
 /**
@@ -37,6 +38,7 @@ public class MemberMyinfoServlet extends HttpServlet {
 		HttpSession session =request.getSession();
 		String userId = (String)session.getAttribute("userId");
 		Member member = new MemberService().selectMember(userId);
+		member.setUserPwd("");
 		ArrayList<Semester> allList = new MemberService().selectPermission(userId);
 		ArrayList<Semester> slist = new MemberService().selectMyPermission(userId);
 		response.setContentType("text/html; charset=utf-8");
@@ -48,7 +50,7 @@ public class MemberMyinfoServlet extends HttpServlet {
 			request.setAttribute("permission", slist);
 			view.forward(request, response);
 		}else {
-			view = request.getRequestDispatcher("views/member/memberError.jsp");
+			view = request.getRequestDispatcher("views/member/memberMyinfoError.jsp");
 			request.setAttribute("message", userId+" 회원님의 정보 보기 실패");
 			view.forward(request, response);
 		}

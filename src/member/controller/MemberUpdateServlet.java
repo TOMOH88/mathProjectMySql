@@ -46,7 +46,7 @@ public class MemberUpdateServlet extends HttpServlet {
 		if(result > 0) {
 			response.sendRedirect("/math/myinfo");
 		}else {
-			RequestDispatcher view = request.getRequestDispatcher("views/member/memberError.jsp");
+			RequestDispatcher view = request.getRequestDispatcher("views/member/memberMyinfoError.jsp");
 			request.setAttribute("message", member.getUserName()+" 회원님의 정보 수정 실패");
 			view.forward(request, response);			
 		}

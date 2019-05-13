@@ -29,7 +29,7 @@ public class MemberDao {
 				member = new Member();
 				
 				member.setUserId(userId);
-				member.setUserPwd(password);
+				member.setUserPwd(rset.getString("user_pwd"));
 				member.setUserName(rset.getString("user_name"));
 				member.setPhone(rset.getString("phone"));
 				member.setRegistDate(rset.getDate("regist_date"));
@@ -97,7 +97,6 @@ public class MemberDao {
 			pstmt.setString(1, userId);
 			rset = pstmt.executeQuery();
 			while(rset.next()) {
-				//String userPwd = rset.getString(2);
 				String userName = rset.getString(3);
 				String phone = rset.getString(4);
 				Date registDate = rset.getDate(5);
@@ -122,8 +121,8 @@ public class MemberDao {
 			pstmt.setString(1, member.getUserPwd());
 			pstmt.setString(2, member.getPhone());
 			pstmt.setString(3, member.getUserName());
-			pstmt.setString(4, member.getUserId());
-			pstmt.setString(5, member.getSalt());
+			pstmt.setString(4, member.getSalt());
+			pstmt.setString(5, member.getUserId());
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();

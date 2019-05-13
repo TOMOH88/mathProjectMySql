@@ -85,7 +85,7 @@ public class MemberLoginServlet extends HttpServlet {
 			}
 			session.setAttribute("userId", userId);
 			loginManager.setSession(session, userId);
-			response.sendRedirect("/math/main.jsp");
+			response.sendRedirect("/math/index.jsp");
 	}
 
 	/**

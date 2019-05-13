@@ -36,7 +36,7 @@ $(function(){
             <p class="log-in">로그인 후 이용할 수 있습니다.</p>
             <%} %>
             <%if(fList.size() == 0){ %>
-            <h1>글이 없습니다.</h1>
+							<p class="log-in">글이 없습니다.</p>
             <%} %>
           </div>
         </div>
@@ -59,7 +59,7 @@ $(function(){
         </button>
     </div>
     <div id="collapse0" class="collapse show" aria-labelledby="heading0" data-parent="#accordion">
-      <div class="card-body">
+      <div class="card-body" style="float:left">
         <h5><%=fList.get(0).getAnswerContent() %></h5>
       </div>
     </div>
@@ -75,13 +75,14 @@ $(function(){
         </button>
     </div>
     <div id="collapse<%= i %>" class="collapse" aria-labelledby="heading<%= i %>" data-parent="#accordion">
-      <div class="card-body">
+      <div class="card-body" style="float:left;">
         <h5><%=fList.get(i).getAnswerContent() %></h5>
       </div>
-  <%}}} %>
     </div>
   </div>
   <br>
+  <%}}} %>
+ 
 </div>
 </div>
 </div>
