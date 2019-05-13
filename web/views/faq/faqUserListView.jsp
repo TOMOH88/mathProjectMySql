@@ -33,7 +33,7 @@ $(function(){
           <h1>FAQ</h1>
             <h3 class="title text-center">목록보기</h3>
             <%}else{ %>
-            <h1>로그인 해주세요</h1>
+            <p class="log-in">로그인 후 이용할 수 있습니다.</p>
             <%} %>
             <%if(fList.size() == 0){ %>
             <h1>글이 없습니다.</h1>
@@ -59,7 +59,7 @@ $(function(){
         </button>
     </div>
     <div id="collapse0" class="collapse show" aria-labelledby="heading0" data-parent="#accordion">
-      <div class="card-body" style="float:left">
+      <div class="card-body">
         <h5><%=fList.get(0).getAnswerContent() %></h5>
       </div>
     </div>
@@ -75,7 +75,7 @@ $(function(){
         </button>
     </div>
     <div id="collapse<%= i %>" class="collapse" aria-labelledby="heading<%= i %>" data-parent="#accordion">
-      <div class="card-body" style="float:left;">
+      <div class="card-body">
         <h5><%=fList.get(i).getAnswerContent() %></h5>
       </div>
   <%}}} %>

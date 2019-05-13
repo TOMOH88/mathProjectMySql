@@ -20,22 +20,26 @@ p.log-in {
 @media (max-width: 576px) {
 	.table > tbody > tr > td:nth-child(2),
 	.table-primary th:nth-child(2) {
-		width: 50%;
+		width: 40%;
+		text-align: center;
 	}
 	
 	.table > tbody > tr > td:nth-child(4),
 	.table-primary th:nth-child(4) {
-		width: 50%;
+		width: 30%;
+	}
+	
+	.table > tbody > tr > td:nth-child(5),
+	.table-primary th:nth-child(5) {
+		width: 30%;
 	}
 }
 
 @media (max-width: 767px) {
 	.table > tbody > tr > td:nth-child(1),
 	.table > tbody > tr > td:nth-child(3),
-	.table > tbody > tr > td:nth-child(5),
 	.table-primary th:nth-child(1),
-	.table-primary th:nth-child(3),
-	.table-primary th:nth-child(5) {
+	.table-primary th:nth-child(3) {
 		display: none;
 	}
 }

@@ -35,7 +35,7 @@ public class MemberAutoLoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		Cookie[] cookies = request.getCookies();
-		String path = "index.jsp";
+		String path = "main.jsp";
 		LoginManager lm = new LoginManager();
 		HttpSession session = request.getSession();
 		RequestDispatcher view = null;
@@ -48,15 +48,15 @@ public class MemberAutoLoginServlet extends HttpServlet {
 					if (userid.equals("userId")) {
 						if (lm.isUsing(cookie.getValue())) {
 							lm.setSession(session, cookie.getValue());
-							path = "index.jsp";
+							path = "main.jsp";
 							break;
 						}
 					} else {
-						path = "index.jsp";
+						path = "main.jsp";
 					}
 				}
 			} else {
-				path = "index.jsp";
+				path = "main.jsp";
 			}
 			
 		} else {
@@ -66,15 +66,15 @@ public class MemberAutoLoginServlet extends HttpServlet {
 					if (userid.equals("userId")) {
 						if (lm.isUsing(cookie.getValue())) {
 							lm.setSession(session, cookie.getValue());
-							path = "index.jsp";
+							path = "main.jsp";
 							break;
 						}
 					} else {
-						path = "index.jsp";
+						path = "main.jsp";
 					}
 				}
 			} else {
-				path = "index.jsp";
+				path = "main.jsp";
 			}
 		}
 		view = request.getRequestDispatcher(path);

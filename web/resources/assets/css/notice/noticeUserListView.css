@@ -1,5 +1,9 @@
 @charset "utf-8";
 
+p.log-in {
+	font-size: 2rem;
+}
+
 .table tr {
 	text-align: center;
 }

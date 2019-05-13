@@ -21,8 +21,7 @@ select {
 div.q {
 	float: left;
 	width: 20%;
-	height: 50px;
-	/* height: 50px; */
+	padding: 15px 0;
 }
 
 label {
@@ -33,4 +32,13 @@ label {
 p.log-in {
 	font-size: 1rem;
 	color: #6e6e6e;
+}
+
+#qImg {
+	text-align: center;
+	padding: 20px 0;
+}
+
+label {
+	color: #333 !important;
 }

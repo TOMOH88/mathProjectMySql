@@ -2,11 +2,11 @@
 
 .table > tbody > tr > th {
 	text-align: center;
-	width: 10%;
+	width: 20%;
 }
 
 .table > tbody > tr > td {
-	width: 90%;
+	width: 80%;
 }
 
 @media (max-width: 576px) {

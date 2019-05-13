@@ -92,7 +92,7 @@
           	<h1>강의</h1>
             <h3 class="title text-center">목록보기</h3>
             <%}else{ %>
-			<h1>로그인 후 이용할 수 있습니다.</h1>	
+			<p class="log-in">로그인 후 이용할 수 있습니다.</p>	
 			<%} %>
           </div>
         </div>

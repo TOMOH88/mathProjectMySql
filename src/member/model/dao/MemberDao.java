@@ -34,7 +34,7 @@ public class MemberDao {
 				member.setPhone(rset.getString("phone"));
 				member.setRegistDate(rset.getDate("regist_date"));
 				member.setLastModified(rset.getDate("lastmodified"));
-				member.setmemberLevel(rset.getString("member_level"));
+				member.setMemberLevel(rset.getString("member_level"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -69,13 +69,14 @@ public class MemberDao {
 	public int insertMember(Connection conn, Member member) {
 		int result=0;
 		PreparedStatement pstmt =null;
-		String query ="INSERT INTO TB_USER VALUES(?, ?, ?, ?,NOW(),NOW(),0)";
+		String query ="INSERT INTO TB_USER VALUES(?, ?, ?, ?,NOW(),NOW(),0,?)";
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, member.getUserId());
 			pstmt.setString(2, member.getUserPwd());
 			pstmt.setString(3, member.getUserName());
 			pstmt.setString(4, member.getPhone());
+			pstmt.setString(5, member.getSalt());
 			result =pstmt.executeUpdate();
 			
 		} catch (Exception e) {
@@ -96,13 +97,13 @@ public class MemberDao {
 			pstmt.setString(1, userId);
 			rset = pstmt.executeQuery();
 			while(rset.next()) {
-				String userPwd = rset.getString(2);
+				//String userPwd = rset.getString(2);
 				String userName = rset.getString(3);
 				String phone = rset.getString(4);
 				Date registDate = rset.getDate(5);
 				Date lastModified = rset.getDate(6);
 				String memberLevel = rset.getString(7);
-				member = new Member(userId, userPwd, userName, phone, registDate, lastModified, memberLevel);
+				member = new Member(userId, userName, phone, registDate, lastModified, memberLevel);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -115,13 +116,14 @@ public class MemberDao {
 	public int memberUpdate(Connection conn, Member member) {
 		int result = 0;
 		PreparedStatement pstmt= null;
-		String qurey ="UPDATE TB_USER SET USER_PWD =?, PHONE =?,USER_NAME=?, LASTMODIFIED = NOW() WHERE USER_ID = ?";
+		String qurey ="UPDATE TB_USER SET USER_PWD =?, PHONE =?,USER_NAME=?, LASTMODIFIED = NOW(), SALT=? WHERE USER_ID = ?";
 		try {
 			pstmt= conn.prepareStatement(qurey);
 			pstmt.setString(1, member.getUserPwd());
 			pstmt.setString(2, member.getPhone());
 			pstmt.setString(3, member.getUserName());
 			pstmt.setString(4, member.getUserId());
+			pstmt.setString(5, member.getSalt());
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -183,13 +185,12 @@ public class MemberDao {
 			rset = pstmt.executeQuery();
 			while(rset.next()) {
 				String userId = rset.getString(1);
-				String userPwd = rset.getString(2);
-				String userName = rset.getString(3);
-				String phone2 = rset.getString(4);
-				Date registDate = rset.getDate(5);
-				Date lastModified = rset.getDate(6);
-				String memberLevel = rset.getString(7);
-				member.add(new Member(userId, userPwd, userName, phone2, registDate, lastModified, memberLevel));
+				String userName = rset.getString(2);
+				String phone2 = rset.getString(3);
+				Date registDate = rset.getDate(4);
+				Date lastModified = rset.getDate(5);
+				String memberLevel = rset.getString(6);
+				member.add(new Member(userId, userName, phone2, registDate, lastModified, memberLevel));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -247,6 +248,25 @@ public class MemberDao {
 		}
 		return slist;
 	}
-
+	public String getSaltById(Connection conn, String userId) {
+		String result = null;
+		PreparedStatement pstmt =null;
+		ResultSet rset = null;
+		String query = "SELECT SALT FROM TB_USER WHERE USER_ID = ?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, userId);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				result = rset.getString(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(rset);
+			close(pstmt);
+		}
+		return result;
+}
 }
 

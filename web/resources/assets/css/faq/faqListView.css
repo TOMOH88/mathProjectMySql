@@ -1,5 +1,10 @@
 @charset "utf-8";
 
+p.log-in {
+	font-size: 1rem;
+	color: #6e6e6e;
+}
+
 .table-primary {
 	text-align: center;
 }

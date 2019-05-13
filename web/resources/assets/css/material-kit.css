@@ -12221,7 +12221,8 @@ fieldset[disabled] .is-focused .switch label:focus {
 
 .form-control,
 .is-focused .form-control {
-  background-image: linear-gradient(to top, #9c27b0 2px, rgba(156, 39, 176, 0) 2px), linear-gradient(to top, #d2d2d2 1px, rgba(210, 210, 210, 0) 1px);
+/*  background-image: linear-gradient(to top, #9c27b0 2px, rgba(156, 39, 176, 0) 2px), linear-gradient(to top, #d2d2d2 1px, rgba(210, 210, 210, 0) 1px);*/
+  background-image: linear-gradient(to top, #a70d00 2px, rgba(167, 13, 0, 0) 2px), linear-gradient(to top, #d2d2d2 1px, rgba(210, 210, 210, 0) 1px);
 }
 
 .form-control:invalid {
@@ -12368,7 +12369,8 @@ fieldset[disabled][disabled] .form-control,
 
 .is-focused [class^='bmd-label'],
 .is-focused [class*=' bmd-label'] {
-  color: #9c27b0;
+/*  color: #9c27b0;*/
+  color: #a70d00;
 }
 
 .is-focused .bmd-label-placeholder {
@@ -17547,6 +17549,7 @@ footer .pull-center {
     display: block;
     content: "";
     z-index: 1;
+		border-left: 1px solid #3C4858;
   }
   .navbar-collapse .dropdown-toggle:after {
     position: absolute;
