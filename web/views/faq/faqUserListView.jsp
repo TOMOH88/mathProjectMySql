@@ -28,13 +28,9 @@ $(function(){
     <div class="container">
       <div class="row">
         <div class="col-md-8 ml-auto mr-auto">
-          <div class="brand text-center">
-          <%if(userId != null){ %>
+          <div class="brand text-center">         
           <h1>FAQ</h1>
-            <h3 class="title text-center">목록보기</h3>
-            <%}else{ %>
-            <p class="log-in">로그인 후 이용할 수 있습니다.</p>
-            <%} %>
+            <h3 class="title text-center">목록보기</h3>           
             <%if(fList.size() == 0){ %>
 							<p class="log-in">글이 없습니다.</p>
             <%} %>
@@ -43,7 +39,6 @@ $(function(){
       </div>
     </div>
   </div>
-  <%if(userId != null){ %>
   <%if(fList.size() > 0){ %>
    <div class="main main-raised">
     <div class="container">
@@ -81,8 +76,7 @@ $(function(){
     </div>
   </div>
   <br>
-  <%}}} %>
- 
+  <%}} %>
 </div>
 </div>
 </div>

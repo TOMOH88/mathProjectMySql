@@ -37,6 +37,16 @@ $(function() {
 	$(document).bind('dragstart',function(){return false;}); //드래그방지
 });
 function goSubmit() {
+	if($("#password").val() == null || $("#password").val() == ""){
+		alert("비밀번호를 입력하셔야 수정이 가능합니다.");
+		$("#password").focus();
+		return false;
+	}else if($("#password1").val() == null || $("#password1").val() == ""){
+		alert("비밀번호 확인을 입력하셔야 수정이 가능합니다.");
+		$("#password1").focus();
+		return false;
+	}	
+	
 	if(confirm("적용하시겠습니까?")){
 		console.log("확인");
 		$("#myinfoporm").submit();
@@ -48,7 +58,6 @@ function goSubmit() {
 	}
     
 }; 
-
 </script>
 </head>
 <style>
@@ -80,7 +89,7 @@ function goSubmit() {
 <table class="table"> 
 <tr><th>아이디</th><th><input type="text" id="userid" name="userid" value="<%=member.getUserId()%>" readonly="readonly" class="form-control"></th></tr>
 <tr><th>비밀번호</th><th><input type="password" id="password" name="password" value="<%=member.getUserPwd()%>" class="form-control"></th></tr>
-<tr><th>비밀번호</th><th><input type="password" id="password1" value="<%=member.getUserPwd()%>" class="form-control"></th></tr>
+<tr><th>비밀번호 확인</th><th><input type="password" id="password1" value="<%=member.getUserPwd()%>" class="form-control"></th></tr>
 <tr><th>이름</th><th><input type="text" name="username" value="<%=member.getUserName()%>" class="form-control"></th></tr>
 <tr><th>전화번호</th><th><input type="text" name="phone" value="<%=member.getPhone()%>" class="form-control"></th></tr>
 <tr><th>가입일</th><th><input type="text" value="<%=member.getRegistDate()%>" readonly="readonly" class="form-control"></th></tr>

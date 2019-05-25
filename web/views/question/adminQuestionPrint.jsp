@@ -24,6 +24,8 @@
 				var jsonStr = JSON.stringify(data);
 				var json = JSON.parse(jsonStr);
 				
+				console.log("갓하늘");
+				
 				var print = "<option value=''>학기</option>";
 				for(var i in json.list){
 					print += "<option value='" + decodeURIComponent(json.list[i].semester).replace(/\+/gi, " ")  + "'>" + decodeURIComponent(json.list[i].semester).replace(/\+/gi, " ")  + "</option>";

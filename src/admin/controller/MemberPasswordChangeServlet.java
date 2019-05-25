@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import admin.model.service.AdminService;
+import member.model.service.SHA256Util;
 
 /**
  * Servlet implementation class MemberPasswordChangeServlet
@@ -32,9 +33,10 @@ public class MemberPasswordChangeServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		String userId = request.getParameter("userid");
-		String pass = request.getParameter("password");
+		String salt = SHA256Util.generateSalt();
+        String newPassword = SHA256Util.getEncrypt(request.getParameter("password"), salt);
 		
-		int result = new AdminService().memberPasswordChange(userId ,pass);
+		int result = new AdminService().memberPasswordChange(userId ,newPassword,salt);
 		String returnValue=null;
 		if(result== 1) {
 			returnValue="ok";

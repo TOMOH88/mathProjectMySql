@@ -52,9 +52,10 @@ public class AdminService {
 		close(conn);
 		return result;
 	}
-	public int memberPasswordChange(String userId, String pass) {
+	public int memberPasswordChange(String userId, String pass, String salt) {
 		Connection conn = getConnection();
-		int result = adao.memberPasswordChange(conn,userId, pass);
+		System.out.println("서비스 :"+userId+"비밀번호"+pass);
+		int result = adao.memberPasswordChange(conn,userId, pass,salt);
 		if(result > 0) {
 			commit(conn);
 		}else {
@@ -63,9 +64,9 @@ public class AdminService {
 		close(conn);
 		return result;
 	}
-	public int resetPassword(String userId, String hex) {
+	public int resetPassword(String userId, String hex, String salt) {
 		Connection conn = getConnection();
-		int result = adao.resetPassword(conn,userId, hex);
+		int result = adao.resetPassword(conn,userId, hex,salt);
 		if(result > 0) {
 			commit(conn);
 		}else {

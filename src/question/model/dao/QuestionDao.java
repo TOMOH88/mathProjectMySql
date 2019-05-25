@@ -15,7 +15,7 @@ public class QuestionDao {
       Statement stmt = null;
       ResultSet rset = null;
       
-      String query = "SELECT SEMESTER_NAME FROM TB_SEMESTER ORDER BY SEMESTER_NAME*1 ASC";
+      String query = "SELECT SEMESTER_NAME FROM TB_SEMESTER ORDER BY SEMESTER_NO";
       
       try {
          stmt = conn.createStatement();
@@ -43,7 +43,7 @@ public class QuestionDao {
       ResultSet rset = null;
       
       String query = "SELECT B.BOOK_NAME FROM TB_BOOK B JOIN TB_SEMESTER S ON B.SEMESTER_NO = S.SEMESTER_NO WHERE S.SEMESTER_NAME = ? "
-      		+ "ORDER BY B.BOOK_NAME*1";
+      		+ "ORDER BY B.BOOK_NO";
       
       try {
          pstmt = conn.prepareStatement(query);
@@ -106,7 +106,7 @@ public class QuestionDao {
             "JOIN TB_CHAPTER C ON B.BOOK_NO = C.BOOK_NO " + 
             "JOIN TB_QUESTION Q ON C.CHAPTER_NO = Q.CHAPTER_NO " +
             "WHERE SEMESTER_NAME = ? AND BOOK_NAME = ?  AND CHAPTER_NAME = ? " +
-            "ORDER BY Q.QUESTION_IMG*1 ";
+            "ORDER BY Q.SEMESTER_NO, Q.BOOK_NO, Q.CHAPTER_NO, Q.QUESTION_IMG";
       
       try {
          pstmt = conn.prepareStatement(query);

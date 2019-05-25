@@ -129,14 +129,15 @@ public class AdminDao {
 		return result;
 		
 	}
-	public int memberPasswordChange(Connection conn, String userId, String pass) {
+	public int memberPasswordChange(Connection conn, String userId, String pass, String salt) {
 		int result = 0;
 		PreparedStatement pstmt= null;
-		String qurey ="UPDATE TB_USER SET USER_PWD=? WHERE USER_ID = ?";
+		String qurey ="UPDATE TB_USER SET USER_PWD=?,SALT=? WHERE USER_ID = ?";
 		try {
 			pstmt= conn.prepareStatement(qurey);
 			pstmt.setString(1, pass);
-			pstmt.setString(2, userId);
+			pstmt.setString(2, salt);
+			pstmt.setString(3, userId);
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -145,14 +146,15 @@ public class AdminDao {
 		}
 		return result;
 	}
-	public int resetPassword(Connection conn, String userId, String hex) {
+	public int resetPassword(Connection conn, String userId, String hex, String salt) {
 		int result = 0;
 		PreparedStatement pstmt= null;
-		String qurey ="UPDATE TB_USER SET USER_PWD=? WHERE USER_ID = ?";
+		String qurey ="UPDATE TB_USER SET USER_PWD=?, SALT = ? WHERE USER_ID = ?";
 		try {
 			pstmt= conn.prepareStatement(qurey);
 			pstmt.setString(1, hex);
-			pstmt.setString(2, userId);
+			pstmt.setString(2, salt);
+			pstmt.setString(3, userId);
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();

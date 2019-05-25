@@ -40,9 +40,6 @@ public class AdminSemesterSelect extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		ArrayList<Question> list = new QuestionService().semesterSelect();
-		/*for (Question q : list) {
-			System.out.println(q.getSemester());
-		}*/
 
 		// 전송할 json 객체 준비
 		JSONObject sendJson = new JSONObject();

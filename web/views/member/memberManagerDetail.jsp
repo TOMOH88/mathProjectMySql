@@ -27,6 +27,17 @@ function backPage() {
 function changePwd() {
 	var pwd1 = $("#password").val();
 	var pwd2 = $("#password1").val();
+	
+	if(pwd1 == null || pwd1 == ""){
+		alert("비밀번호를 입력하셔야 수정이 가능합니다.");
+		$("#password").focus();
+		return false;
+	}else if(pwd2 == null || pwd2 == ""){
+		alert("비밀번호 확인을 입력하셔야 수정이 가능합니다.");
+		$("#password1").focus();
+		return false;
+	}	
+	
 	if(pwd1 != pwd2){
 		alert("암호와 암호 확인이 일치하지 않습니다.\n"
 				+"다시 입력하십시요.");
@@ -186,8 +197,8 @@ function sendmail(){
 <table class="table table-striped table-hover">
 <tr></tr>
 <tr><td>회원 아이디 </td><th><input type="text" id="userid"  value="<%=member.getUserId()%>" readonly="readonly" class="form-control"></th></tr>
-<tr><td>회원 이름</td><th><input type="text" value="<%=member.getUserName() %>" class="form-control" readonly></th></tr>
-<tr><td>전화번호</td><th><input type="text" value="<%=member.getPhone() %>" class="form-control" readonly></th></tr>
+<tr><td>회원 이름</td><th><input type="text" value="<%=member.getUserName() %>" class="form-control"></th></tr>
+<tr><td>전화번호</td><th><input type="text" value="<%=member.getPhone() %>" class="form-control"></th></tr>
 <tr><td>비밀번호</td><th><input type="password" name="password" id="password" id="userid" value="<%=member.getUserPwd() %>" class="form-control"></th></tr>
 <tr><td>비밀번호 확인</td><th><input type="password" name="password" id="password1" id="userid" value="<%=member.getUserPwd() %>" class="form-control"></th></tr>
 <tr><td colspan="2" align="center"><button onclick="changePwd();" class="btn btn-default">변경</button>&nbsp;&nbsp;<button onclick="sendmail();" class="btn btn-default">비밀번호 초기화</button></td></tr>

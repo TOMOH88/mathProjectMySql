@@ -40,7 +40,7 @@ public class SendEmailServlet extends HttpServlet {
 		String hex = Integer.toHexString(num);
 		String salt = SHA256Util.generateSalt();
         String newPassword = SHA256Util.getEncrypt(hex, salt);
-		int result = new AdminService().resetPassword(userId,newPassword);
+		int result = new AdminService().resetPassword(userId,newPassword,salt);
 		response.setContentType("text/html; charset=utf-8");
 		String returnValue=null;
 		if(result== 1) {

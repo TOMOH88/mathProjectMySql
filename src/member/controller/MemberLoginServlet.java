@@ -39,23 +39,23 @@ public class MemberLoginServlet extends HttpServlet {
 		  
 		  request.setCharacterEncoding("utf-8");
 			HttpSession session = request.getSession();
-			String userId = request.getParameter("email");
-			
-			 String memberSalt = new MemberService().getSaltById(userId);
-		     String inputPassword = request.getParameter("password");
-		     String newPassword = SHA256Util.getEncrypt(inputPassword, memberSalt);
-
-			
-			String keeplogin = request.getParameter("keeplogin");
-			System.out.println(keeplogin);
-			LoginManager loginManager = LoginManager.getInstance();
 			RequestDispatcher view = null;
+			String userId = request.getParameter("email");
 			int ckdId = new MemberService().checkId(userId);
 			if (ckdId < 1) {
 				view = request.getRequestDispatcher("/views/member/memberError.jsp");
 				request.setAttribute("message", "회원 가입후 이용해주세요!");
 				view.forward(request, response);
 			}
+			
+			String memberSalt = new MemberService().getSaltById(userId);
+		    String inputPassword = request.getParameter("password");
+		    String newPassword = SHA256Util.getEncrypt(inputPassword, memberSalt);
+
+			String keeplogin = request.getParameter("keeplogin");
+			System.out.println(keeplogin);
+			LoginManager loginManager = LoginManager.getInstance();
+			
 			
 			if (loginManager.isValid(userId, newPassword)) {
 				loginManager.removeSession(userId);

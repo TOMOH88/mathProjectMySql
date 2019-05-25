@@ -37,12 +37,8 @@ window.onload = function(){
       <div class="row">
         <div class="col-md-8 ml-auto mr-auto">
           <div class="brand text-center">
-          <%if(userId != null){ %>
           	<h1>공지사항</h1>
-            <h3 class="title text-center">목록보기</h3>
-            <%}else{ %>
-            <p class="log-in">로그인 후 이용할 수 있습니다.</p>
-            <%} %>
+            <h3 class="title text-center">목록보기</h3>         
           </div>
         </div>
       </div>
@@ -50,8 +46,7 @@ window.onload = function(){
   </div>
    <div class="main main-raised">
     <div class="container">
-      <div class="section text-center">
-<%if(userId != null){ %>      
+      <div class="section text-center">   
 <table class="table table-striped table-hover">
 	<tr class="table-success">
 		<th>글번호</th>
@@ -145,7 +140,6 @@ window.onload = function(){
                   </button>
                   </div>
 </form>
-<%} %>
 </div>
 </div>
 </div>
