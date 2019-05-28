@@ -56,16 +56,17 @@ public class MemberLoginServlet extends HttpServlet {
 			System.out.println(keeplogin);
 			LoginManager loginManager = LoginManager.getInstance();
 			
+			if(!(loginManager.isValid(userId, newPassword))) {
+				view = request.getRequestDispatcher("/views/member/memberError.jsp");
+				request.setAttribute("message", "비밀번호를 확인해주세요!");
+				System.out.println("1");
+				view.forward(request, response);
+			}else {
 			
 			if (loginManager.isValid(userId, newPassword)) {
 				loginManager.removeSession(userId);
 			}
 			
-			if(!(loginManager.isValid(userId, newPassword))) {
-				view = request.getRequestDispatcher("/views/member/memberError.jsp");
-				request.setAttribute("message", "비밀번호를 확인해주세요!");
-				view.forward(request, response);
-			}
 			
 			if (keeplogin != null && userId != null) {
 				if (keeplogin.equals("yes")) {
@@ -83,9 +84,11 @@ public class MemberLoginServlet extends HttpServlet {
 				}}}
 			}
 			}
+			System.out.println("2");
 			session.setAttribute("userId", userId);
 			loginManager.setSession(session, userId);
 			response.sendRedirect("/math/index.jsp");
+			}
 	}
 
 	/**

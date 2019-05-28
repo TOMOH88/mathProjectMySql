@@ -86,6 +86,7 @@ public class MemberService {
 	public String getSaltById(String userId) {
 		Connection conn = getConnection();
 		String salt = mdao.getSaltById(conn,userId);
+		close(conn);
 		return salt;
 	}
 }

@@ -54,7 +54,6 @@ public class AdminService {
 	}
 	public int memberPasswordChange(String userId, String pass, String salt) {
 		Connection conn = getConnection();
-		System.out.println("서비스 :"+userId+"비밀번호"+pass);
 		int result = adao.memberPasswordChange(conn,userId, pass,salt);
 		if(result > 0) {
 			commit(conn);
